@@ -15,12 +15,11 @@ type ButtonAsAnchor = CommonProps &
 type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 
 export function Button(props: ButtonProps) {
-  const { children, variant = 'primary', icon, className = '', ...rest } = props;
-  const base = variant === 'primary' ? 'btn-primary' : 'btn-secondary';
-  const classes = `${base} ${className}`;
-
   if (props.as === 'a') {
-    const { as: _as, ...anchorProps } = rest as AnchorHTMLAttributes<HTMLAnchorElement>;
+    const { children, variant = 'primary', icon, className = '', as: _as, ...anchorProps } = props;
+    const base = variant === 'primary' ? 'btn-primary' : 'btn-secondary';
+    const classes = `${base} ${className}`;
+
     return (
       <a className={classes} {...anchorProps}>
         {children}
@@ -29,7 +28,10 @@ export function Button(props: ButtonProps) {
     );
   }
 
-  const buttonProps = rest as ButtonHTMLAttributes<HTMLButtonElement>;
+  const { children, variant = 'primary', icon, className = '', as: _as, ...buttonProps } = props;
+  const base = variant === 'primary' ? 'btn-primary' : 'btn-secondary';
+  const classes = `${base} ${className}`;
+
   return (
     <button className={classes} {...buttonProps}>
       {children}

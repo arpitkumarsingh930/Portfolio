@@ -21,7 +21,7 @@ export const PERSONAL_INFO = {
   tagline:
     'Engineering student with hands-on experience designing reliable, scalable web systems, grounded in strong data structures, algorithms, and system design fundamentals.',
   bio: [
-    "I'm an engineering student pursuing a dual degree — B.Tech in Mechanical Engineering at NSUT and a BS in Data Science and Applications at IIT Madras. I care about writing clean code, learning deeply, and building products that hold up under real-world use.",
+    "I'm an engineering student pursuing a dual degree — B.Tech at NSUT and a BS in Data Science and Applications at IIT Madras. I care about writing clean code, learning deeply, and building products that hold up under real-world use.",
     'My work spans full-stack development, machine learning, and systems design — from building booking platforms with concurrency-safe transaction logic to training fraud-detection models that perform reliably at scale. I enjoy the parts of engineering that are unglamorous but essential: data consistency, edge cases, and code that other people can maintain.',
   ],
 };
