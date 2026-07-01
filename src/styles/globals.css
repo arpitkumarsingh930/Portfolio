@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-bg-primary text-text-primary dark:bg-bg-dark dark:text-text-dark-primary font-sans antialiased;
+    font-feature-settings: 'ss01' on, 'ss02' on;
+  }
+
+  ::selection {
+    @apply bg-accent/20 text-text-primary dark:text-text-dark-primary;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg-primary dark:ring-offset-bg-dark rounded-sm;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-content mx-auto px-6 sm:px-8 lg:px-10;
+  }
+
+  .section-padding {
+    @apply py-20 sm:py-28;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold text-accent tracking-wide uppercase mb-3;
+  }
+
+  .section-heading {
+    @apply text-3xl sm:text-4xl font-display font-bold tracking-tight text-text-primary dark:text-text-dark-primary;
+  }
+
+  .section-subheading {
+    @apply mt-4 text-lg text-text-secondary dark:text-text-dark-secondary max-w-2xl;
+  }
+
+  .card {
+    @apply bg-white dark:bg-bg-dark-secondary border border-border dark:border-border-dark rounded-2xl shadow-soft dark:shadow-soft-dark transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:shadow-soft-lg hover:-translate-y-1 hover:border-accent/30;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-accent text-white font-medium text-sm transition-all duration-300 hover:bg-accent-hover hover:shadow-soft-lg active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-transparent text-text-primary dark:text-text-dark-primary font-medium text-sm border border-border dark:border-border-dark transition-all duration-300 hover:border-accent hover:text-accent active:scale-[0.98];
+  }
+
+  .tag-pill {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-bg-secondary dark:bg-white/5 text-text-secondary dark:text-text-dark-secondary border border-border dark:border-border-dark;
+  }
+}
