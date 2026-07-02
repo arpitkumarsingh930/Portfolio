@@ -14,7 +14,7 @@ export const PERSONAL_INFO = {
   email: 'arpitkumarsingh930@gmail.com',
   phone: '+91 9304423152',
   linkedin: 'https://linkedin.com/in/arpitkumarsingh',
-  github: 'https://github.com/arpitkumarsingh',
+  github: 'https://github.com/arpitkumarsingh930',
   leetcode: 'https://leetcode.com/arpitkumarsingh',
   resumeUrl: '/Arpit_Kumar_Singh_Resume.pdf',
   location: 'New Delhi, India',
