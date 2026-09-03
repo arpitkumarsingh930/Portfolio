@@ -30,6 +30,8 @@ export interface EducationItem {
   degree: string;
   duration: string;
   location: string;
+  /** Optional grade line, e.g. "CGPA: 7.0". */
+  score?: string;
 }
 
 export interface Achievement {

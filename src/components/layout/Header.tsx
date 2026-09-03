@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { NAV_LINKS, PERSONAL_INFO } from '@/constants';
+import { ExternalLink, Menu, X } from 'lucide-react';
+import { NAV_LINKS, RESUME_PREVIEW_PATH } from '@/constants';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useScrolled } from '@/hooks/useScrolled';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
@@ -73,11 +73,13 @@ export function Header() {
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
           <a
-            href={PERSONAL_INFO.resumeUrl}
-            download
+            href={RESUME_PREVIEW_PATH}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-secondary !px-4 !py-2 text-sm"
           >
             Resume
+            <ExternalLink size={14} />
           </a>
         </div>
 
@@ -120,8 +122,15 @@ export function Header() {
                 </li>
               ))}
               <li className="pt-2">
-                <a href={PERSONAL_INFO.resumeUrl} download className="btn-secondary w-full text-sm">
-                  Download Resume
+                <a
+                  href={RESUME_PREVIEW_PATH}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="btn-secondary w-full text-sm"
+                >
+                  View Resume
+                  <ExternalLink size={14} />
                 </a>
               </li>
             </ul>

@@ -19,6 +19,11 @@ export function Education() {
                 {item.institution}
               </h3>
               <p className="text-sm text-accent font-medium mt-1">{item.degree}</p>
+              {item.score && (
+                <p className="text-xs text-text-secondary dark:text-text-dark-secondary mt-2">
+                  {item.score}
+                </p>
+              )}
               <div className="mt-4 flex items-center justify-between text-xs text-text-secondary dark:text-text-dark-secondary">
                 <span>{item.location}</span>
                 <span className="tag-pill !py-0.5">{item.duration}</span>

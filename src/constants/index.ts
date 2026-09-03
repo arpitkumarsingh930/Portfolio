@@ -7,22 +7,27 @@ import type {
   NavLink,
 } from '@/types';
 
+/** Route for the in-app resume preview page (opened in a new tab). */
+export const RESUME_PREVIEW_PATH = '/resume';
+
 export const PERSONAL_INFO = {
   name: 'Arpit Kumar Singh',
-  title: 'Software Engineer',
-  subtitle: 'Data Science Student · Mechanical Engineering Student',
+  title: 'Full-Stack Developer',
+  subtitle: 'AI-Native Applications · Data Science Student · Mechanical Engineering Student',
   email: 'arpitkumarsingh930@gmail.com',
   phone: '+91 9304423152',
   linkedin: 'https://linkedin.com/in/arpitkumarsingh',
   github: 'https://github.com/arpitkumarsingh930',
   leetcode: 'https://leetcode.com/arpitkumarsingh',
   resumeUrl: '/Arpit_Kumar_Singh_Resume.pdf',
+  resumeFileName: 'Arpit_Kumar_Singh_Resume.pdf',
+  avatarUrl: '/profile.jpg',
   location: 'New Delhi, India',
   tagline:
-    'Engineering student with hands-on experience designing reliable, scalable web systems, grounded in strong data structures, algorithms, and system design fundamentals.',
+    'Full-stack developer building AI-native applications — RAG pipelines, vector search, and LLM-integrated systems — on a foundation of MERN, REST APIs, DSA, and system design.',
   bio: [
     "I'm an engineering student pursuing a dual degree — B.Tech at NSUT and a BS in Data Science and Applications at IIT Madras. I care about writing clean code, learning deeply, and building products that hold up under real-world use.",
-    'My work spans full-stack development, machine learning, and systems design — from building booking platforms with concurrency-safe transaction logic to training fraud-detection models that perform reliably at scale. I enjoy the parts of engineering that are unglamorous but essential: data consistency, edge cases, and code that other people can maintain.',
+    'My work spans full-stack development and applied AI — from hybrid retrieval systems that fuse vector search with knowledge graphs, to production React dashboards and the SQL schemas behind them. I have a genuine interest in agentic AI and where software engineering goes next, and I enjoy the parts of the job that are unglamorous but essential: data consistency, edge cases, and code that other people can maintain.',
   ],
 };
 
@@ -38,22 +43,39 @@ export const NAV_LINKS: NavLink[] = [
 
 export const SKILLS: SkillCategory[] = [
   { title: 'Languages', skills: ['Java', 'Python', 'JavaScript', 'TypeScript', 'SQL'] },
-  { title: 'Frontend', skills: ['React', 'Tailwind CSS', 'HTML', 'CSS'] },
-  { title: 'Backend', skills: ['Node.js', 'Express'] },
-  { title: 'Database', skills: ['PostgreSQL', 'MySQL', 'MongoDB'] },
-  { title: 'Tools', skills: ['Git', 'GitHub', 'VS Code', 'Postman', 'Vercel'] },
-  { title: 'Concepts', skills: ['DSA', 'OOP', 'DBMS', 'OS', 'Computer Networks'] },
+  { title: 'Frontend', skills: ['React', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS'] },
+  { title: 'Backend', skills: ['Node.js', 'Express', 'REST APIs', 'JWT'] },
+  { title: 'Databases', skills: ['MongoDB', 'MySQL', 'PostgreSQL'] },
+  {
+    title: 'AI & LLM',
+    skills: [
+      'RAG Pipelines',
+      'LLM Integration',
+      'Embeddings',
+      'ChromaDB',
+      'Neo4j',
+      'Prompt Engineering',
+      'FastAPI',
+      'Sentence-Transformers',
+    ],
+  },
+  { title: 'DevOps & Tools', skills: ['Git', 'GitHub', 'GitHub Actions', 'CI/CD', 'VS Code'] },
+  {
+    title: 'Concepts',
+    skills: ['DSA', 'System Design', 'OOP', 'DBMS', 'OS', 'Computer Networks'],
+  },
 ];
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
-    id: 'cae-intern',
-    role: 'CAE Design Intern',
-    organization: 'Engineering Internship',
-    duration: 'May 2026 – Jun 2026',
+    id: 'realityscale',
+    role: 'Software Engineer',
+    organization: 'RealityScale',
+    duration: 'Nov 2025 – Jan 2026',
     points: [
-      'Developed detailed 3D CAD models and performed FEA simulations including static structural, modal, thermal, fatigue, and dynamic analysis using ANSYS and SolidWorks.',
-      'Validated simulation results through stress, deformation, strain, temperature, and safety factor evaluation to ensure design reliability and performance.',
+      'Built reusable React components, dynamic dashboards, and secure authentication flows, improving user experience while reducing frontend development time through a modular component architecture.',
+      'Designed and optimized SQL database schemas and backend APIs, improving query performance.',
+      'Collaborated with cross-functional teams to ship production features end-to-end, contributing to code reviews, debugging, and performance tuning across the stack.',
     ],
     type: 'work',
   },
@@ -83,6 +105,33 @@ export const EXPERIENCE: ExperienceItem[] = [
 ];
 
 export const PROJECTS: Project[] = [
+  {
+    id: 'industrial-knowledge-ai',
+    title: 'Industrial Knowledge AI',
+    description:
+      'A RAG + knowledge graph platform that answers natural-language questions over heterogeneous industrial PDFs, fusing semantic vector search with graph-based cross-document reasoning to keep every answer grounded in its source.',
+    techStack: ['Python', 'FastAPI', 'Spring Boot', 'React', 'ChromaDB', 'Neo4j', 'Google Gemini'],
+    highlights: [
+      'Hybrid retrieval fusing ChromaDB vector search (all-MiniLM-L6-v2 embeddings) with a Neo4j knowledge graph for source-grounded answers',
+      'End-to-end ingestion pipeline — PDFBox extraction, 1000/200 overlap chunking, embedding and vector indexing, with spaCy entity extraction populating the graph',
+      'Google Gemini generation constrained to retrieved context, with the AI layer decoupled into a FastAPI microservice separate from the Spring Boot backend',
+      'REST APIs across a three-tier architecture: React frontend, Spring Boot ingestion backend, Python AI service',
+    ],
+    featured: true,
+  },
+  {
+    id: 'hostel-complaint-system',
+    title: 'Hostel Complaint & Application Management',
+    description:
+      'A full-stack system for managing hostel complaints and administrative applications across a residential campus, built around a complete complaint lifecycle and role-separated access.',
+    techStack: ['Node.js', 'Express', 'MongoDB'],
+    highlights: [
+      'Role-based access control for students and administrators using secure authentication and session-based flows',
+      'Complaint lifecycle with real-time status tracking — Pending, In-Progress, Resolved',
+      'Admin dashboard to review complaints, view uploaded images, add remarks, and update resolution status',
+    ],
+    featured: true,
+  },
   {
     id: 'stayin',
     title: 'StayIn.com',
@@ -143,6 +192,7 @@ export const EDUCATION: EducationItem[] = [
     degree: 'B.Tech in Mechanical Engineering',
     duration: '2023 – 2027',
     location: 'New Delhi, India',
+    score: 'CGPA: 7.0',
   },
   {
     id: 'iitm',
@@ -156,9 +206,9 @@ export const EDUCATION: EducationItem[] = [
 export const ACHIEVEMENTS: Achievement[] = [
   {
     id: 'hackathon',
-    title: '24-Hour Hackathon',
+    title: 'Hackathon Winner — 24 Hours',
     description:
-      'Developed and deployed a full-stack product in a 24-hour hackathon, demonstrating rapid prototyping and collaborative problem solving.',
+      'Won a 24-hour hackathon by building a full-stack AI chatbot for a coffee shop, letting customers browse products, get personalized recommendations, and talk to an intelligent virtual assistant.',
     icon: 'trophy',
   },
   {
@@ -180,9 +230,10 @@ export const ACHIEVEMENTS: Achievement[] = [
     icon: 'award',
   },
   {
-    id: 'leetcode',
-    title: 'LeetCode',
-    description: 'Consistent problem solving across data structures and algorithms.',
+    id: 'competitive-programming',
+    title: '350+ DSA Problems Solved',
+    description:
+      'Solved 350+ data structures and algorithms problems in C++ across LeetCode, CodeForces, and CodeChef.',
     icon: 'code',
     link: PERSONAL_INFO.leetcode,
   },
@@ -194,4 +245,4 @@ export const ACHIEVEMENTS: Achievement[] = [
   },
 ];
 
-export const GITHUB_USERNAME = 'arpitkumarsingh';
+export const GITHUB_USERNAME = 'arpitkumarsingh930';

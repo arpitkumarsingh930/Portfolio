@@ -1,36 +1,19 @@
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { BackToTop } from '@/components/layout/BackToTop';
-import { SkipToContent } from '@/components/ui/SkipToContent';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { Hero } from '@/components/sections/Hero';
-import { About } from '@/components/sections/About';
-import { Skills } from '@/components/sections/Skills';
-import { Experience } from '@/components/sections/Experience';
-import { Projects } from '@/components/sections/Projects';
-import { Education } from '@/components/sections/Education';
-import { Achievements } from '@/components/sections/Achievements';
-import { GithubSection } from '@/components/sections/GithubSection';
-import { Contact } from '@/components/sections/Contact';
+import { Home } from '@/pages/Home';
+import { ResumePreview } from '@/pages/ResumePreview';
+import { RESUME_PREVIEW_PATH } from '@/constants';
 
 function App() {
   return (
     <ErrorBoundary>
-      <SkipToContent />
-      <Header />
-      <main id="main-content">
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Education />
-        <Achievements />
-        <GithubSection />
-        <Contact />
-      </main>
-      <Footer />
-      <BackToTop />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path={RESUME_PREVIEW_PATH} element={<ResumePreview />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </BrowserRouter>
     </ErrorBoundary>
   );
 }

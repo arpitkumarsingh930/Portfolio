@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download, Mail } from 'lucide-react';
 import { PERSONAL_INFO } from '@/constants';
 import { Button } from '@/components/ui/Button';
 
 export function Hero() {
+  const [avatarFailed, setAvatarFailed] = useState(false);
+
   return (
     <section
       id="home"
@@ -45,8 +48,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.16 }}
             className="mt-6 text-lg text-text-secondary dark:text-text-dark-secondary max-w-xl leading-relaxed"
           >
-            Software Engineer · Data Science Student · Mechanical Engineering Student.{' '}
-            {PERSONAL_INFO.tagline}
+            {PERSONAL_INFO.title} · {PERSONAL_INFO.subtitle}. {PERSONAL_INFO.tagline}
           </motion.p>
 
           <motion.div
@@ -65,7 +67,13 @@ export function Hero() {
             >
               View Projects
             </Button>
-            <Button as="a" href={PERSONAL_INFO.resumeUrl} download variant="secondary" icon={<Download size={15} />}>
+            <Button
+              as="a"
+              href={PERSONAL_INFO.resumeUrl}
+              download={PERSONAL_INFO.resumeFileName}
+              variant="secondary"
+              icon={<Download size={15} />}
+            >
               Download Resume
             </Button>
             <Button
@@ -91,9 +99,19 @@ export function Hero() {
         >
           <div className="relative">
             <div className="w-56 h-56 sm:w-72 sm:h-72 rounded-3xl bg-gradient-to-br from-accent/10 to-accent/[0.03] border border-border dark:border-border-dark flex items-center justify-center overflow-hidden">
-              <span className="font-display font-bold text-6xl sm:text-7xl text-accent/25 select-none">
-                AKS
-              </span>
+              {avatarFailed ? (
+                <span className="font-display font-bold text-6xl sm:text-7xl text-accent/25 select-none">
+                  AKS
+                </span>
+              ) : (
+                <img
+                  src={PERSONAL_INFO.avatarUrl}
+                  alt={`Portrait of ${PERSONAL_INFO.name}`}
+                  loading="eager"
+                  onError={() => setAvatarFailed(true)}
+                  className="w-full h-full object-cover"
+                />
+              )}
             </div>
             <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-accent/[0.06] border border-border dark:border-border-dark -z-10" />
           </div>

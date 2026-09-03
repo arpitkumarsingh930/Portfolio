@@ -16,8 +16,8 @@ const HIGHLIGHTS = [
   },
   {
     icon: Sparkles,
-    title: 'Software Engineering',
-    detail: 'AI/ML · Full Stack · Problem Solving',
+    title: 'Full-Stack & AI Engineering',
+    detail: 'RAG & LLM Systems · MERN · Problem Solving',
   },
 ];
 
